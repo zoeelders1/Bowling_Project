@@ -39,13 +39,22 @@ ggplot(select_res, aes(x=HandiCap, y =RawScore, color = WonGame))+
   theme_minimal()
 
 
+
+
 regr <- lm(RawScore ~ HandiCap, data=select_res)
+
+summary(regr)
 
 
 
 cor(select_res$RawScore, select_res$HandiCapScore)
 
-  
+library(gtsummary) 
+theme_gtsummary_journal("qjecon")
+
+t1 <- tbl_regression(regr, intercept = TRUE)
+
+
 
 dbClearResult(select_q)
 
